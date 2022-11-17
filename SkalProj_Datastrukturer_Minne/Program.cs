@@ -56,7 +56,7 @@ namespace SkalProj_Datastrukturer_Minne
         public void Method1()
         {
             int a = 10;
-            
+
             int b = 20;
 
             Program obj = new Program();
@@ -154,7 +154,7 @@ I första metod value typen int x har definierats med värde "3".
         /// </summary>
         /// <param name="args"></param>
         static void Main()
-        {        
+        {
 
             while (true)
             {
@@ -257,20 +257,62 @@ I första metod value typen int x har definierats med värde "3".
             //}
 
             List<string> theList = new List<string>();
-            Console.WriteLine("Enter '+' at the beginning of string" +
-                "to add' or 'm' to exit to main menu?");
-            Console.WriteLine("select 1 for book 1, 2 for book 2, and 3 for book 3");
+            /*Frågorna 2.,3.,4. 17.11.2022. List<string> theList listans kapacitet ökar 
+             från 0 till 4 när 
+             jag lägger till en item "adam"
+             4. List<T> använder Array som är alltid
+            en mindre på grund av array datastruktur
+            så första array element är T[0], inte T[1]. Om capacity är mindre än count,
+            händer det här: "ArgumentOutOfRangeException
+Capacity is set to a value that is less than Count."
+            "Internally, a List<T> uses an array (so T[]) to store its contents.
+This array starts off with a size of 4 elements, so equivalent to saying 
+            T[] array = new T[4]. When you add an item to a List<T>, 
+            it is stored in the array: the first item in array[0], 
+            the second in array[1], etc. The fifth item, however, 
+            can't fit into this array, as it's only four elements long. 
+            And because the length of an array can't be changed after it has 
+            been created, the only option is to take the contents of the array 
+            and move it to a new array that is large enough to hold that fifth 
+            item as well. The implementation of List<T> chooses to double the 
+            size of the array buffer each time it runs out of space, so to
+            fit the fifth item, it doubles the array capacity to 8. Then 16, and so on.
+            Fråga 5. Listans capacity minskar inte när man tar bort en item
+            Fråga 6. Man borde använda Array då när man vet hur lång arrayen är
+            från första början
+            "*/
+            Console.WriteLine("Enter '+' at the beginning of string " +
+                "to add item or '-' to remove item or 'm' to exit to main menu?");
+            //Console.WriteLine("select 1 for book 1, 2 for book 2, and 3 for book 3");
+
+
             string input = Console.ReadLine();
-            //try
-            //    {
-                if (String.IsNullOrEmpty(input))
-                {
+            if (String.IsNullOrEmpty(input))
+            {
                 Console.Clear();
                 /*15.11.2022. If the input string is empty, we ask the users for some input.*/
                 Console.WriteLine("Please enter some input!");
                 ExamineList();
                 //throw new ArgumentException("Input cannot be null or empty.");
             }
+            Console.WriteLine(theList.Capacity);
+
+            //theList.Add(input);
+
+
+
+            ////try
+            ////    {
+            //Console.WriteLine(theList.Capacity);
+            //if (String.IsNullOrEmpty(input))
+            //{
+            //    Console.Clear();
+            //    /*15.11.2022. If the input string is empty, we ask the users for some input.*/
+            //    Console.WriteLine("Please enter some input!");
+            //    ExamineList();
+            //    //throw new ArgumentException("Input cannot be null or empty.");
+            //}
+            //ExamineList();
             // If the input string is empty, we ask the users for some input.
             //{
             //    Console.Clear();
@@ -286,16 +328,38 @@ I första metod value typen int x har definierats med värde "3".
             string value = input.Substring(1);
             //string withoutPlusOrMinus
 
-            switch (nav) {
+            switch (nav)
+            {
                 case '+':
-                    theList.Add(value);
+                    //string input = Console.ReadLine();
+                    Console.WriteLine(theList.Capacity);
+
+                    theList.Add(input);
+
+                    Console.WriteLine(theList.Capacity);
+
+
+                    //try
+                    //    {
+                    //Console.WriteLine(theList.Capacity);
+                    //if (String.IsNullOrEmpty(input))
+                    //{
+                    //    Console.Clear();
+                    //    /*15.11.2022. If the input string is empty, we ask the users for some input.*/
+                    //    Console.WriteLine("Please enter some input!");
+                    //    ExamineList();
+                    //    //throw new ArgumentException("Input cannot be null or empty.");
+                    //}
+                    ExamineList();
+                    //theList.Add(value);
                     break;
                 case '-':
                     theList.Remove(value);
+                    Console.WriteLine(theList.Capacity);
                     break;
                 case 'm':
                     Program.Main();
-                        break;
+                    break;
                 default:
                     /*15.11.2022. In case nav is
                      neither + or -, I tell the user
@@ -305,95 +369,128 @@ I första metod value typen int x har definierats med värde "3".
 
 */
                     Console.WriteLine("Please use either + or - at the beginning of the string");
-                        break;
-            }
-
-            switch (input)
-            {
-                case '1':
-                    ExamineList();
-                    break;
-                case '2':
-                    ExamineQueue();
-                    break;
-                case '3':
-                    ExamineStack();
-                    break;
-                case '4':
-                    CheckParanthesis();
-                    break;
-                /*
-                 * Extend the menu to include the recursive 
-                 * and iterative exercises.
-                 */
-                case '0':
-                    Environment.Exit(0);
-                    break;
-                default:
-                    Console.WriteLine("Please enter some valid input (0, 1, 2, 3, 4)");
                     break;
             }
         }
-    }
+            //switch (input)
+            //{
+            //    case '1':
+            //        ExamineList();
+            //        break;
+            //    case '2':
+            //        ExamineQueue();
+            //        break;
+            //    case '3':
+            //        ExamineStack();
+            //        break;
+            //    case '4':
+            //        CheckParanthesis();
+            //        break;
+            /*
+             * Extend the menu to include the recursive 
+             * and iterative exercises.
+             */
+            //        case '0':
+            //            Environment.Exit(0);
+            //            break;
+            //        default:
+            //            Console.WriteLine("Please enter some valid input (0, 1, 2, 3, 4)");
+            //            break;
+            //    }
+            //}
+            //}
 
-    //while (input != "quit" && input != "exit")
-    //{
-    //switch (nav) {...}
-    //List<string> theList = new List<string>();
-    //    char nav = input[0];
-    //    string value = input.Substring(1);
-    //}
-    //Program.Main();
-    //Program.Main();
+            //while (input != "quit" && input != "exit")
+            //{
+            //switch (nav) {...}
+            //List<string> theList = new List<string>();
+            //    char nav = input[0];
+            //    string value = input.Substring(1);
+            //}
+            //Program.Main();
+            //Program.Main();
 
-    //    2.​​​​​​​​​​​​​​​​När​​ökar​​listans​​kapacitet ?
-    //    (Alltså​​den​​underliggande​​arrayens​​storlek)
-
-
-
-    //    3.​​​​​​​​​​​​​​​​Med​​hur​​mycket​​ökar​​kapaciteten ? 
+            //    2.​​​​​​​​​​​​​​​​När​​ökar​​listans​​kapacitet ?
+            //    (Alltså​​den​​underliggande​​arrayens​​storlek)
 
 
 
-    //    4.​​​​​​​​​​​​​​​​Varför​​ökar​​inte​​listans​​kapacitet​​
-    //    i​​samma​​takt​​som​​element​​läggs​​till ? 
+            //    3.​​​​​​​​​​​​​​​​Med​​hur​​mycket​​ökar​​kapaciteten ? 
 
 
 
-    //    5.​​​​​​​​​​​​​​​​Minskar​​kapaciteten​​när​​element​​tas​​bort​​ur​​listan ? 
+            //    4.​​​​​​​​​​​​​​​​Varför​​ökar​​inte​​listans​​kapacitet​​
+            //    i​​samma​​takt​​som​​element​​läggs​​till ? 
 
 
 
-    //    6.​​​​​​​​​​​​​​​​När​​är​​det​​då​​fördelaktigt​​att​​använda​​
-    //    en​​egendefinierad​​​array​​​istället​​för​​en​​lista ?
+            //    5.​​​​​​​​​​​​​​​​Minskar​​kapaciteten​​när​​element​​tas​​bort​​ur​​listan ? 
+
+
+
+            //    6.​​​​​​​​​​​​​​​​När​​är​​det​​då​​fördelaktigt​​att​​använda​​
+            //    en​​egendefinierad​​​array​​​istället​​för​​en​​lista ?
 
 
 
 
 
-    /*
-     * Loop this method untill the user inputs something to exit to main menue.
-     * Create a switch statement with cases '+' and '-'
-     * '+': Add the rest of the input to the list (The user could write +Adam and "Adam" would be added to the list)
-     * '-': Remove the rest of the input from the list (The user could write -Adam and "Adam" would be removed from the list)
-     * In both cases, look at the count and capacity of the list
-     * As a default case, tell them to use only + or -
-     * Below you can see some inspirational code to begin working.
-    */
+            /*
+             * Loop this method untill the user inputs something to exit to main menue.
+             * Create a switch statement with cases '+' and '-'
+             * '+': Add the rest of the input to the list (The user could write +Adam and "Adam" would be added to the list)
+             * '-': Remove the rest of the input from the list (The user could write -Adam and "Adam" would be removed from the list)
+             * In both cases, look at the count and capacity of the list
+             * As a default case, tell them to use only + or -
+             * Below you can see some inspirational code to begin working.
+            */
 
-    //List<string> theList = new List<string>();
-    //string input = Console.ReadLine();
-    //char nav = input[0];
-    //string value = input.substring(1);
+            //List<string> theList = new List<string>();
+            //string input = Console.ReadLine();
+            //char nav = input[0];
+            //string value = input.substring(1);
 
-    //switch(nav){...}
-}
+            //switch(nav){...}
+            //}
 
-        /// <summary>
-        /// Examines the datastructure Queue
-        /// </summary>
-        static void ExamineQueue()
-        {
+            /// <summary>
+            /// Examines the datastructure Queue
+            /// </summary>
+            static void ExamineQueue()
+            {
+            /*17.11.2022. Övning 2: ExamineQueue()
+             * Datastrukturenkö(implementerad iQueue-klassen)
+             * fungerar enligtFörst In Först Ut(FIFO)principen. 
+             * Alltså att det element som läggstill först 
+             * kommer vara det som tas bortförst.
+             * 1.Simulera följande kö på papper:
+             * a.ICA öppnar och kön till kassan är tom
+             * b.Kalle ställer sig i kön
+             * c.Greta ställer sig i kön
+             * d.Kalle blir expedierad och lämnar kön
+             * e.Stina ställer sig i kön
+             * f.Greta blir expedierad och lämnar kön
+             * g.Olle ställer sig i kön
+             * h....
+             
+             svaret: Queue<string> icaQueue = new Queue<string>();
+        icaQueue.Enqueue("icaOpen");
+        icaQueue.Enqueue("kallePosition");
+        icaQueue.Enqueue("gretaPosition");
+        icaQueue.Enqueue("stinaPosition");
+        icaQueue.Enqueue("ollePosition");
+            
+             
+             2.Implementera metodenExamineQueue. 
+            Metodenska simulera hur enkö
+            fungerargenom att tillåta användaren
+            att ställa element i kön (enqueue) 
+            och ta bort elementur kön (dequeue). 
+            AnvändQueue-klassentill hjälpför att
+            implementera metoden.Simulera sedan 
+            ICA-kön med hjälp av ditt program.*/
+
+
             /*
              * Loop this method untill the user inputs something to exit to main menue.
              * Create a switch with cases to enqueue items or dequeue items
@@ -405,24 +502,26 @@ I första metod value typen int x har definierats med värde "3".
         /// Examines the datastructure Stack
         /// </summary>
         static void ExamineStack()
-        {
-            /*
-             * Loop this method until the user inputs something to exit to main menue.
-             * Create a switch with cases to push or pop items
-             * Make sure to look at the stack after pushing and and poping to see how it behaves
-            */
+            {
+                /*
+                 * Loop this method until the user inputs something to exit to main menue.
+                 * Create a switch with cases to push or pop items
+                 * Make sure to look at the stack after pushing and and poping to see how it behaves
+                */
+            }
+
+            static void CheckParanthesis()
+            {
+                /*
+                 * Use this method to check if the paranthesis in a string is Correct or incorrect.
+                 * Example of correct: (()), {}, [({})],  List<int> list = new List<int>() { 1, 2, 3, 4 };
+                 * Example of incorrect: (()]), [), {[()}],  List<int> list = new List<int>() { 1, 2, 3, 4 );
+                 */
+
+            }
+
         }
-
-        static void CheckParanthesis()
-        {
-            /*
-             * Use this method to check if the paranthesis in a string is Correct or incorrect.
-             * Example of correct: (()), {}, [({})],  List<int> list = new List<int>() { 1, 2, 3, 4 };
-             * Example of incorrect: (()]), [), {[()}],  List<int> list = new List<int>() { 1, 2, 3, 4 );
-             */
-
-        }
-
     }
-}
+//}
+
 
