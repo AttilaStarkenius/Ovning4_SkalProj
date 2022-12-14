@@ -12,7 +12,6 @@ namespace SkalProj_Datastrukturer_Minne
         public int top = -1;
         public char[] items = new char[100];
 
-        //Queue<string> icaQueue = new Queue<string>();
 
 
         //Frågor: 
@@ -162,14 +161,9 @@ I första metod value typen int x har definierats med värde "3".
         /// The main method, vill handle the menues for the program
         /// </summary>
         /// <param name="args"></param>
-        static void Main(/*Queue<string> icaQueue*/)
+        static void Main()
         {
-            //Queue<string> icaQueue = new Queue<string>();
-            //icaQueue.Enqueue("icaOpen");
-            //icaQueue.Enqueue("kallePosition");
-            //icaQueue.Enqueue("gretaPosition");
-            //icaQueue.Enqueue("stinaPosition");
-            //icaQueue.Enqueue("ollePosition");
+            
 
             while (true)
             {
@@ -264,16 +258,7 @@ I första metod value typen int x har definierats med värde "3".
             //string input = Console.ReadLine();
 
 
-            //char nav = ' '; //Creates the character input to be used with the switch-case below.
-            //try
-            //{
-            //    nav = Console.ReadLine()![0]; //Tries to set input to the first char in an input line
-            //}
-            //catch (IndexOutOfRangeException) //If the input line is empty, we ask the users for some input.
-            //{
-            //    Console.Clear();
-            //    Console.WriteLine("Please enter some input!");
-            //}
+   
 
             List<string> theList = new List<string>();
             /*Frågorna 2.,3.,4. 17.11.2022. List<string> theList listans kapacitet ökar 
@@ -419,39 +404,6 @@ This array starts off with a size of 4 elements, so equivalent to saying
         //}
         //}
 
-        //while (input != "quit" && input != "exit")
-        //{
-        //switch (nav) {...}
-        //List<string> theList = new List<string>();
-        //    char nav = input[0];
-        //    string value = input.Substring(1);
-        //}
-        //Program.Main();
-        //Program.Main();
-
-        //    2.​​​​​​​​​​​​​​​​När​​ökar​​listans​​kapacitet ?
-        //    (Alltså​​den​​underliggande​​arrayens​​storlek)
-
-
-
-        //    3.​​​​​​​​​​​​​​​​Med​​hur​​mycket​​ökar​​kapaciteten ? 
-
-
-
-        //    4.​​​​​​​​​​​​​​​​Varför​​ökar​​inte​​listans​​kapacitet​​
-        //    i​​samma​​takt​​som​​element​​läggs​​till ? 
-
-
-
-        //    5.​​​​​​​​​​​​​​​​Minskar​​kapaciteten​​när​​element​​tas​​bort​​ur​​listan ? 
-
-
-
-        //    6.​​​​​​​​​​​​​​​​När​​är​​det​​då​​fördelaktigt​​att​​använda​​
-        //    en​​egendefinierad​​​array​​​istället​​för​​en​​lista ?
-
-
-
 
 
         /*
@@ -560,17 +512,8 @@ This array starts off with a size of 4 elements, so equivalent to saying
 
                     //try
                     //    {
-                    //Console.WriteLine(theList.Capacity);
-                    //if (String.IsNullOrEmpty(input))
-                    //{
-                    //    Console.Clear();
-                    //    /*15.11.2022. If the input string is empty, we ask the users for some input.*/
-                    //    Console.WriteLine("Please enter some input!");
-                    //    ExamineList();
-                    //    //throw new ArgumentException("Input cannot be null or empty.");
-                    //}
+
                     ExamineQueue();
-                    //theList.Add(value);
                     break;
                 case '-':
                     // Remove the 'four' element from the queue
@@ -603,7 +546,7 @@ This array starts off with a size of 4 elements, so equivalent to saying
                     break;
 
                     /*
-                     * Loop this method untill the user inputs something to exit to main menue.
+                     * Loop this method until the user inputs something to exit to main menue.
                      * Create a switch with cases to enqueue items or dequeue items
                      * Make sure to look at the queue after Enqueueing and Dequeueing to see how it behaves
                     */
@@ -662,11 +605,7 @@ Pop and return the element from stack1."
 
             switch (nav)
             {
-                case '+':
-                    //string input = Console.ReadLine();
-                    //Console.WriteLine(theList.Capacity);
-
-                    //icaStack2 = icaStack1;
+                case '+':               
 
                     foreach (var item in icaStack1)
                         icaStack2.Push(item);
@@ -676,7 +615,7 @@ Pop and return the element from stack1."
                     foreach (var item in icaStack2)
                         icaStack1.Push(item);
 
-                    /*19.11.2022. stack items: foreach (string number in icaStack2)
+                    /*19.11.2022. stack items: foreach (string number in icaStack1)
             {
                 Console.WriteLine(number);
             }*/
@@ -685,24 +624,10 @@ Pop and return the element from stack1."
                         Console.WriteLine(number);
                     }
 
-                    //icaQueue.Enqueue(newItem);
+              
+                    
 
-                    /*19.11.2022. queue items: foreach (string number in icaQueue)
-            {
-                Console.WriteLine(number);
-            }*/
-                    //foreach (string number in icaStack2)
-                    //{
-                    //    Console.WriteLine(number);
-                    //}
-
-                    //Console.WriteLine(theList.Capacity);
-
-
-                    //try
-                    //    {
-                    //Console.WriteLine(theList.Capacity);
-                    //if (String.IsNullOrEmpty(input))
+                    
                     //{
                     //    Console.Clear();
                     //    /*15.11.2022. If the input string is empty, we ask the users for some input.*/
@@ -711,7 +636,6 @@ Pop and return the element from stack1."
                     //    //throw new ArgumentException("Input cannot be null or empty.");
                     //}
                     ExamineStack();
-                    //theList.Add(value);
                     break;
                 case '-':
                     // Remove the 'newItem' element from the stack
